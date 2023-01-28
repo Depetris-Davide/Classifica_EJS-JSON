@@ -1,0 +1,43 @@
+<%- include("../partials/header.ejs") %>
+    <script>
+        function loadTable() {
+            let data = JSON.parse(localStorage.getItem("data"))
+            let rows = localStorage.getItem("rows")
+            document.getElementById("tableTitle").innerHTML = data.tableTitle
+            document.getElementById("row1").innerHTML = data.row1
+            for (let i = 2; i <= rows; i++) {
+                document.getElementById("tableBody").innerHTML +=
+                    "<tr> <th scope='row'>Row" + i + "</th><td id='row"
+                    + i + "'></td></tr>"
+                switch (i) {
+                    case 2:
+                        document.getElementById("row2").innerHTML = data.row2
+                        break;
+                    case 3:
+                        document.getElementById("row3").innerHTML = data.row3
+                        break;
+                    case 4:
+                        document.getElementById("row4").innerHTML = data.row4
+                        break;
+                    case 5:
+                        document.getElementById("row5").innerHTML = data.row5
+                        break;
+
+                }
+            }
+        }
+    </script>
+    <table class="table table-bordered table-dark">
+        <thead>
+            <tr>
+                <th scope="col" style="margin-left:30vw;" id="tableTitle">Table title</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <tr>
+                <th scope="row">Row 1</th>
+                <td id="row1">Row 1 text</td>
+            </tr>
+        </tbody>
+    </table>
+    <%- include("../partials/footer.ejs") %>
